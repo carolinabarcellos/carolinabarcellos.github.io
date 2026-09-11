@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfólio de Carolina Barcellos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F5F1;
+    --paper-raised:#FFFFFF;
+    --ink:#1B201D;
+    --ink-soft:#545F59;
+    --ink-faint:#8A948C;
+    --line:#DBDFD8;
+    --teal:#1E5E58;
+    --teal-strong:#164742;
+    --teal-tint:#E5EEEC;
+    --garnet:#7C2F3B;
+    --garnet-tint:#F5E9E9;
+    --shadow: 0 1px 2px rgba(27,32,29,0.04), 0 8px 24px -12px rgba(27,32,29,0.14);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#14171A;
+      --paper-raised:#1C201D;
+      --ink:#ECEEEA;
+      --ink-soft:#A7AFA9;
+      --ink-faint:#707A73;
+      --line:#2B302C;
+      --teal:#6FC2B8;
+      --teal-strong:#8ED4CB;
+      --teal-tint:#182827;
+      --garnet:#E2919D;
+      --garnet-tint:#2B1E21;
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 28px -14px rgba(0,0,0,0.55);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#14171A;
+    --paper-raised:#1C201D;
+    --ink:#ECEEEA;
+    --ink-soft:#A7AFA9;
+    --ink-faint:#707A73;
+    --line:#2B302C;
+    --teal:#6FC2B8;
+    --teal-strong:#8ED4CB;
+    --teal-tint:#182827;
+    --garnet:#E2919D;
+    --garnet-tint:#2B1E21;
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 12px 28px -14px rgba(0,0,0,0.55);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:inherit;}
+  h1,h2,h3{font-family:"Newsreader", Georgia, "Times New Roman", serif; text-wrap:balance; margin:0;}
+
+  .eyebrow{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+    display:flex;
+    align-items:center;
+    gap:0.6em;
+  }
+  .eyebrow::before{
+    content:"";
+    width:1.4em;
+    height:1px;
+    background:var(--line);
+    display:inline-block;
+  }
+
+  .wrap{max-width:1080px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  header.site{
+    position:sticky; top:0; z-index:40;
+    background:color-mix(in srgb, var(--paper) 86%, transparent);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+    max-width:1080px; margin:0 auto;
+  }
+  .mark{
+    display:flex; align-items:center; gap:10px;
+    font-family:"IBM Plex Mono", monospace;
+    font-weight:600; font-size:0.95rem; letter-spacing:0.02em;
+    text-decoration:none;
+  }
+  .mark svg{display:block;}
+  .navlinks{display:flex; align-items:center; gap:28px; list-style:none; margin:0; padding:0;}
+  .navlinks a{
+    font-size:0.86rem; text-decoration:none; color:var(--ink-soft);
+    position:relative; padding-bottom:3px;
+  }
+  .navlinks a::after{
+    content:""; position:absolute; left:0; right:0; bottom:0; height:1px;
+    background:var(--teal); transform:scaleX(0); transform-origin:left;
+    transition:transform .25s ease;
+  }
+  .navlinks a:hover{color:var(--ink);}
+  .navlinks a:hover::after{transform:scaleX(1);}
+  .navlinks a.back{color:var(--teal-strong); font-family:"IBM Plex Mono", monospace; font-size:0.8rem;}
+  @media (max-width:760px){ .navlinks li:not(.back-item){display:none;} }
+
+  /* ---------- HERO ---------- */
+  .hero{padding:64px 0 52px; border-bottom:1px solid var(--line);}
+  .hero h1{
+    font-size:clamp(2.2rem, 4.6vw, 3.2rem); font-weight:600; line-height:1.08; margin:14px 0 16px;
+  }
+  .hero .tagline{font-size:1.08rem; color:var(--ink-soft); max-width:60ch;}
+  .cta-row{display:flex; gap:12px; margin-top:26px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:9px;
+    padding:11px 20px; border-radius:2px;
+    font-size:0.88rem; font-weight:600; text-decoration:none;
+    border:1px solid var(--ink); transition:transform .18s ease, background .18s ease, border-color .18s ease;
+  }
+  .btn.primary{background:var(--ink); color:var(--paper);}
+  .btn.primary:hover{transform:translateY(-2px); background:var(--teal-strong); border-color:var(--teal-strong);}
+  .btn.ghost{background:transparent; color:var(--ink); border-color:var(--line);}
+  .btn.ghost:hover{transform:translateY(-2px); border-color:var(--ink);}
+
+  /* ---------- SECTION SHELLS ---------- */
+  section{padding:60px 0;}
+  section + section{border-top:1px solid var(--line);}
+  .section-head{margin-bottom:32px;}
+  .section-head h2{font-size:1.8rem; font-weight:600; margin-top:10px;}
+  .lede{color:var(--ink-soft); max-width:62ch; margin-top:12px; font-size:1rem;}
+  .tint-teal{background:var(--teal-tint);}
+  .tint-garnet{background:var(--garnet-tint);}
+
+  /* ---------- FEATURED RESEARCH CARD ---------- */
+  .feature-card{
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:4px;
+    padding:30px; box-shadow:var(--shadow);
+    display:grid; grid-template-columns:1fr auto; gap:22px; align-items:start;
+  }
+  @media (max-width:700px){ .feature-card{grid-template-columns:1fr;} }
+  .badge{
+    font-family:"IBM Plex Mono", monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:.08em;
+    color:var(--teal-strong); background:var(--teal-tint); padding:5px 10px; border-radius:100px;
+    white-space:nowrap; height:fit-content;
+  }
+  .feature-card h3{font-size:1.35rem; font-weight:600;}
+  .feature-card .role-line{font-family:"IBM Plex Mono", monospace; font-size:0.8rem; color:var(--ink-faint); margin-top:8px;}
+  .feature-card p{color:var(--ink-soft); margin-top:12px; max-width:64ch;}
+  .feature-tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:16px;}
+  .feature-tags span{
+    font-family:"IBM Plex Mono", monospace; font-size:0.76rem; color:var(--teal-strong);
+    border:1px solid color-mix(in srgb, var(--teal) 35%, var(--line)); padding:4px 10px; border-radius:100px;
+  }
+
+  /* ---------- REPO GRID ---------- */
+  .group-label{
+    font-family:"IBM Plex Mono", monospace; font-size:0.76rem; text-transform:uppercase;
+    letter-spacing:.08em; color:var(--ink-faint); margin:0 0 14px;
+  }
+  .repo-grid + .group-label{margin-top:36px;}
+  .repo-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;}
+  @media (max-width:820px){ .repo-grid{grid-template-columns:repeat(2, 1fr);} }
+  @media (max-width:560px){ .repo-grid{grid-template-columns:1fr;} }
+  .repo-card{
+    display:block; text-decoration:none; color:inherit;
+    background:var(--paper-raised); border:1px solid var(--line); border-radius:4px;
+    padding:18px; transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+  .repo-card:hover{transform:translateY(-3px); box-shadow:var(--shadow); border-color:color-mix(in srgb, var(--teal) 35%, var(--line));}
+  .repo-top{display:flex; justify-content:space-between; align-items:flex-start; gap:10px;}
+  .repo-name{font-family:"IBM Plex Mono", monospace; font-weight:600; font-size:0.92rem;}
+  .repo-lang{font-size:0.7rem; font-family:"IBM Plex Mono", monospace; color:var(--ink-faint); white-space:nowrap; padding-top:3px;}
+  .repo-desc{margin-top:10px; font-size:0.86rem; color:var(--ink-soft); line-height:1.5;}
+  .more-repos{margin-top:20px;}
+  .more-repos a{font-family:"IBM Plex Mono", monospace; font-size:0.86rem; color:var(--teal-strong); text-decoration:none; border-bottom:1px solid currentColor;}
+
+  /* ---------- BOOKS ---------- */
+  .book-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;}
+  @media (max-width:820px){ .book-grid{grid-template-columns:1fr;} }
+  .book-card{
+    position:relative; background:var(--paper-raised); border:1px solid var(--line); border-radius:2px 6px 6px 2px;
+    padding:24px 22px 22px 26px; box-shadow:var(--shadow);
+  }
+  .book-card::before{
+    content:""; position:absolute; left:0; top:0; bottom:0; width:6px; background:var(--garnet);
+    border-radius:2px 0 0 2px;
+  }
+  .book-year{font-family:"IBM Plex Mono", monospace; font-size:0.74rem; color:var(--ink-faint);}
+  .book-card h3{font-family:"Newsreader", serif; font-style:italic; font-size:1.22rem; font-weight:600; margin-top:6px; line-height:1.25;}
+  .book-role{font-size:0.76rem; font-family:"IBM Plex Mono", monospace; color:var(--garnet); text-transform:uppercase; letter-spacing:.06em; margin-top:6px;}
+  .book-card p{color:var(--ink-soft); font-size:0.9rem; margin-top:10px;}
+  .book-link{display:inline-block; margin-top:14px; font-family:"IBM Plex Mono", monospace; font-size:0.82rem; text-decoration:none; color:var(--ink); border-bottom:1px solid var(--ink-faint);}
+  .book-link:hover{color:var(--garnet); border-color:var(--garnet);}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:44px 0; text-align:center;}
+  .contact-line{font-size:1.02rem; color:var(--ink-soft); margin:0 0 18px;}
+  .foot-cta{display:flex; justify-content:center; gap:12px; flex-wrap:wrap;}
+  .foot-meta{margin-top:16px; font-family:"IBM Plex Mono", monospace; font-size:0.78rem; color:var(--ink-faint);}
+
+  :focus-visible{outline:2px solid var(--teal); outline-offset:2px;}
+</style>
+<meta name="description" content="Portfólio de Carolina Barcellos — pesquisa em IA aplicada à saúde, ciência de dados e livros publicados.">
+</head>
+<body>
+<header class="site">
+  <nav class="nav">
+    <a class="mark" href="#top">
+      <svg width="26" height="26" viewBox="0 0 26 26" fill="none" aria-hidden="true">
+        <circle cx="6" cy="20" r="2.4" fill="var(--teal)"/>
+        <circle cx="13" cy="9" r="2.4" fill="var(--teal)"/>
+        <circle cx="21" cy="16" r="2.4" fill="var(--garnet)"/>
+        <path d="M6 20 13 9 21 16" stroke="var(--ink-faint)" stroke-width="1" fill="none"/>
+      </svg>
+      CPB
+    </a>
+    <ul class="navlinks">
+      <li class="back-item"><a class="back" href="index.html">← Sobre mim</a></li>
+      <li><a href="#pesquisa">Pesquisa</a></li>
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#escrita">Escrita</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">PORTFÓLIO</p>
+      <h1>Pesquisa, dados e escrita</h1>
+      <p class="tagline">Uma seleção do que venho construindo — de modelos de inteligência artificial a trabalhos de ciência de dados e livros publicados.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="https://github.com/carolinabarcellos" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.1 3.29 9.4 7.86 10.93.57.1.78-.25.78-.55v-2.15c-3.2.7-3.87-1.35-3.87-1.35-.53-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.18 1.82 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.2.66.79.55C20.21 21.39 23.5 17.09 23.5 12 23.5 5.73 18.27.5 12 .5z"/></svg>
+          GitHub
+        </a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/carolinabarcellos" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.9 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4zM8.5 8h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-6.9c0-1.65-.03-3.77-2.3-3.77-2.3 0-2.65 1.8-2.65 3.65V23h-4z"/></svg>
+          LinkedIn
+        </a>
+        <a class="btn ghost" href="index.html">← Sobre mim</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PESQUISA -->
+  <section id="pesquisa" class="tint-teal">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Pesquisa</p>
+        <h2>IA aplicada à saúde</h2>
+      </div>
+      <div class="feature-card">
+        <div>
+          <h3>Modelos de IA para diagnóstico e prognóstico médico</h3>
+          <div class="role-line">Bolsista de Iniciação Científica · Fundep · Departamento de Ciência da Computação (DCC), UFMG · 2025 – atual</div>
+          <p>Desenvolvimento de modelos de inteligência artificial aplicados à saúde, com experiência em análise de ressonâncias magnéticas, predição de resposta terapêutica em Doenças Inflamatórias Intestinais (DII) e prognóstico de Carcinoma Hepatocelular (CHC), utilizando dados clínicos, laboratoriais e imagens médicas multimodais.</p>
+          <div class="feature-tags">
+            <span>Ressonância magnética</span>
+            <span>Dados multimodais</span>
+            <span>Deep Learning</span>
+          </div>
+        </div>
+        <span class="badge">Iniciação Científica</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETOS -->
+  <section id="projetos">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Projetos</p>
+        <h2>Ciência de dados &amp; programação</h2>
+        <p class="lede">Trabalhos da graduação em Ciência de Dados na UFMG, disponíveis no GitHub.</p>
+      </div>
+
+      <p class="group-label">Estatística, economia &amp; dados quantitativos</p>
+      <div class="repo-grid">
+        <a class="repo-card" href="https://github.com/carolinabarcellos/Inferencia-Bayesiana-Analise-de-Dados" target="_blank" rel="noopener">
+          <div class="repo-top"><span class="repo-name">Inferência Bayesiana</span><span class="repo-lang">R</span></div>
+          <p class="repo-desc">Inferência bayesiana e simulação MCMC (Stan) para modelar acidentes em rodovias federais.</p>
+        </a>
+        <a class="repo-card" href="https://github.com/carolinabarcellos/TP1-Engenharia-de-Software" target="_blank" rel="noopener">
+          <div class="repo-top"><span class="repo-name">Análise de Crédito</span><span class="repo-lang">Python</span></div>
+          <p class="repo-desc">Pipeline de classificação de risco de crédito para instituições financeiras — da análise exploratória à avaliação de viés. Trabalho em grupo, Engenharia de Software.</p>
+        </a>
+        <a class="repo-card" href="https://github.com/carolinabarcellos/DesafioQuantAI2026" target="_blank" rel="noopener">
+          <div class="repo-top"><span class="repo-name">Desafio Quant AI 2026</span><span class="repo-lang">Python</span></div>
+          <p class="repo-desc">Estratégia quantitativa long-short para ações da B3, combinando rede neural e modelo estatístico — Desafio Quant AI, Itaú Asset.</p>
+        </a>
+        <a class="repo-card" href="https://github.com/carolinabarcellos/Analise-Exploratoria-e-Preditiva-da-Economia-Brasileira" target="_blank" rel="noopener">
+          <div class="repo-top"><span class="repo-name">Economia Brasileira</span><span class="repo-lang">Python</span></div>
+          <p class="repo-desc">Análise exploratória e preditiva de indicadores micro e macroeconômicos da economia brasileira, com dados do IBGE, FMI e IPEA.</p>
+        </a>
+        <a class="repo-card" href="https://github.com/carolinabarcellos/AnaliseRegressao" target="_blank" rel="noopener">
+          <div class="repo-top"><span class="repo-name">Análise de Regressão</span><span class="repo-lang">R</span></div>
+          <p class="repo-desc">Modelos de regressão (stepwise, LASSO, Box-Cox) para explicar o tempo total de sono em diferentes espécies de mamíferos.</p>
+        </a>
+        <a class="repo-card" href="https://github.com/carolinabarcellos/AnaliseQualidadeAr" target="_blank" rel="noopener">
+          <div class="repo-top"><span class="repo-name">Qualidade do Ar</span><span class="repo-lang">Python</span></div>
+          <p class="repo-desc">Coleta e análise de dados de qualidade do ar em capitais da América Latina, no contexto da COP30. Trabalho em grupo.</p>
+        </a>
+      </div>
+
+      <p class="group-label">Fundamentos de programação</p>
+      <div class="repo-grid">
+        <a class="repo-card" href="https://github.com/carolinabarcellos/OrdenadorUniversal" target="_blank" rel="noopener">
+          <div class="repo-top"><span class="repo-name">OrdenadorUniversal</span><span class="repo-lang">C</span></div>
+          <p class="repo-desc">Trabalho prático da disciplina Estrutura de Dados — UFMG.</p>
+        </a>
+        <a class="repo-card" href="https://github.com/carolinabarcellos/SistemaEscalonamento" target="_blank" rel="noopener">
+          <div class="repo-top"><span class="repo-name">SistemaEscalonamento</span><span class="repo-lang">C++</span></div>
+          <p class="repo-desc">Trabalho prático da disciplina Estrutura de Dados — UFMG.</p>
+        </a>
+        <a class="repo-card" href="https://github.com/carolinabarcellos/ConsultasSistema" target="_blank" rel="noopener">
+          <div class="repo-top"><span class="repo-name">ConsultasSistema</span><span class="repo-lang">C++</span></div>
+          <p class="repo-desc">Trabalho prático da disciplina Estrutura de Dados — UFMG.</p>
+        </a>
+        <a class="repo-card" href="https://github.com/carolinabarcellos/JogosTabuleiro" target="_blank" rel="noopener">
+          <div class="repo-top"><span class="repo-name">JogosTabuleiro</span><span class="repo-lang">C++</span></div>
+          <p class="repo-desc">Trabalho em grupo — disciplina de Programação e Desenvolvimento.</p>
+        </a>
+        <a class="repo-card" href="https://github.com/carolinabarcellos/JogoPokemon" target="_blank" rel="noopener">
+          <div class="repo-top"><span class="repo-name">JogoPokemon</span><span class="repo-lang">C</span></div>
+          <p class="repo-desc">Trabalho prático — Programação e Desenvolvimento de Software 1.</p>
+        </a>
+        <a class="repo-card" href="https://github.com/carolinabarcellos/TrabalhoSQL" target="_blank" rel="noopener">
+          <div class="repo-top"><span class="repo-name">TrabalhoSQL</span><span class="repo-lang">Jupyter Notebook</span></div>
+          <p class="repo-desc">Trabalho em grupo — Introdução a Banco de Dados.</p>
+        </a>
+      </div>
+
+      <div class="more-repos">
+        <a href="https://github.com/carolinabarcellos" target="_blank" rel="noopener">Ver todos os repositórios no GitHub →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ESCRITA -->
+  <section id="escrita" class="tint-garnet">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Escrita</p>
+        <h2>Livros publicados</h2>
+      </div>
+      <div class="book-grid">
+        <div class="book-card">
+          <div class="book-year">2026</div>
+          <h3>Decifrando Dados: Um Guia Prático de Ciência de Dados</h3>
+          <div class="book-role">Coautora</div>
+          <p>Guia prático de introdução à Ciência de Dados e ao mercado de trabalho na área.</p>
+          <a class="book-link" href="https://a.co/d/0ajzCFUw" target="_blank" rel="noopener">Ver na Amazon →</a>
+        </div>
+        <div class="book-card">
+          <div class="book-year">2024</div>
+          <h3>Bullets of Love</h3>
+          <div class="book-role">Autora</div>
+          <p>Escrito originalmente em inglês; disponível em inglês e português.</p>
+          <a class="book-link" href="https://a.co/d/31MgCro" target="_blank" rel="noopener">Ver na Amazon →</a>
+        </div>
+        <div class="book-card">
+          <div class="book-year">2020</div>
+          <h3>Friends To Lovers</h3>
+          <div class="book-role">Coautora</div>
+          <p>Publicado na Wattpad. Mais de 80 mil leitores e 1º lugar na categoria Romance – Amizade.</p>
+          <a class="book-link" href="https://www.wattpad.com/story/295415595-friends-to-lovers" target="_blank" rel="noopener">Ler na Wattpad →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contato">
+    <div class="wrap">
+      <p class="contact-line">Quer entrar em contato comigo?</p>
+      <div class="foot-cta">
+        <a class="btn primary" href="https://www.linkedin.com/in/carolinabarcellos" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.9 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V23h-4zM8.5 8h3.8v2.05h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V23h-4v-6.9c0-1.65-.03-3.77-2.3-3.77-2.3 0-2.65 1.8-2.65 3.65V23h-4z"/></svg>
+          LinkedIn
+        </a>
+        <a class="btn ghost" href="https://github.com/carolinabarcellos" target="_blank" rel="noopener">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.1 3.29 9.4 7.86 10.93.57.1.78-.25.78-.55v-2.15c-3.2.7-3.87-1.35-3.87-1.35-.53-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.18 1.82 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.2.66.79.55C20.21 21.39 23.5 17.09 23.5 12 23.5 5.73 18.27.5 12 .5z"/></svg>
+          GitHub
+        </a>
+        <a class="btn ghost" href="index.html">← Sobre mim</a>
+      </div>
+      <p class="foot-meta">Belo Horizonte, Brasil</p>
+    </div>
+  </footer>
+
+</main>
+</body>
+</html>
